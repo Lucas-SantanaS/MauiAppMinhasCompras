@@ -1,12 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.Xaml;
+using Microsoft.Maui.Hosting;
+using Microsoft.Maui.ApplicationModel;
+using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Devices;
+using MauiAppMinhasCompras.Models;
+using SQLite;
 
 namespace MauiAppMinhasCompras.Helpers
 {
-    internal class SQLiteDatabaseHelper
+    public class SQLiteDatabaseHelper
     {
+        readonly SQLiteAsyncConnection _conn;
+
+        public SQLiteDatabaseHelper(string path)
+        {
+            _conn = new SQLiteAsyncConnection(path);
+            _conn.CreateTableAsync<Produto>().Wait();
+        }
+
+        // Inserir produto
+        public Task<int> Insert(Produto p)
+        {
+            return _conn.InsertAsync(p);
+        }
+
+        // Atualizar produto
+        public Task<int> Update(Produto p)
+        {
+            string sql = "UPDATE Produto SET Descricao=?, Quantidade=?, Preco=? WHERE Id=?";
+            return _conn.ExecuteAsync(sql, p.Descricao, p.Quantidade, p.Preco, p.Id);
+        }
+
+        // Deletar produto pelo Id
+        public async Task<int> Delete(int id)
+        {
+            var produto = await _conn.FindAsync<Produto>(id);
+            if (produto != null)
+                return await _conn.DeleteAsync(produto);
+            return 0;
+        }
+
+        // Listar todos os produtos
+        public Task<List<Produto>> GetAll()
+        {
+            return _conn.Table<Produto>().ToListAsync();
+        }
+
+        // Buscar produto pelo texto da descrição
+        public Task<List<Produto>> Search(string q)
+        {
+            string sql = "SELECT * FROM Produto WHERE Descricao LIKE '%" + q + "%'";
+            return _conn.QueryAsync<Produto>(sql);
+        }
     }
 }
