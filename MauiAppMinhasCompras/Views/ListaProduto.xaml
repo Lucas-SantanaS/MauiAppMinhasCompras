@@ -4,6 +4,7 @@
              x:Class="MauiAppMinhasCompras.Views.ListaProduto"
              Title="Minhas Compras">
     
+    <!-- Criação dos botões na tela inicial -->
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Somar" />
         <ToolbarItem Text="Adicionar" Clicked="ToolbarItem_Clicked"/>

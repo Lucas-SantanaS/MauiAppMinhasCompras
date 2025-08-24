@@ -24,7 +24,8 @@ public partial class NovoProduto : ContentPage
             };
             // Inserir no banco de dados
             await App.Db.Insert(p);
-            // Voltar para a página anterior (ListaProduto)
+
+            // Confirmação da inserção no banco de dados
             await DisplayAlert("Sucesso!", "Registro inserido.", "OK");
         }
         catch (Exception ex)

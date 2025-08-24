@@ -48,7 +48,7 @@ namespace MauiAppMinhasCompras.Helpers
             return _conn.Table<Produto>().ToListAsync();
         }
 
-        // Buscar produto pelo texto da descrição
+        // Buscar produto pelo descrição
         public Task<List<Produto>> Search(string q)
         {
             string sql = "SELECT * FROM Produto WHERE Descricao LIKE '%" + q + "%'";

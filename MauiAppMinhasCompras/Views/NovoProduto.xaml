@@ -4,12 +4,14 @@
              x:Class="MauiAppMinhasCompras.Views.NovoProduto"
              Title="Adicionar Produto">
     
+    <!-- Criação do botão Salvar -->
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Salvar" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
-    
+
+    <!-- Parte visual da aba Adicionar produto -->
     <VerticalStackLayout Spacing="10" Padding="10">
-        <Label Text="Descrição do produto:"/>
+        <Label Text="Descrição do produto"/>
         <Entry  x:Name="txt_descricao"/>
 
         <Label Text="Quantidade"/>
