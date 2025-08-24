@@ -11,7 +11,7 @@ namespace MauiAppMinhasCompras
             get
             {
                 if (_db == null)
-                {
+                { // Definição do caminho do banco de dados
                     string path = Path.Combine(
                         Environment.GetFolderPath(
                             Environment.SpecialFolder.LocalApplicationData),

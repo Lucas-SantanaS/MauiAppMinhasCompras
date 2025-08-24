@@ -15,10 +15,13 @@ namespace MauiAppMinhasCompras.Helpers
         readonly SQLiteAsyncConnection _conn;
 
         public SQLiteDatabaseHelper(string path)
-        {
+        { // Conectar ao banco de dados
             _conn = new SQLiteAsyncConnection(path);
             _conn.CreateTableAsync<Produto>().Wait();
         }
+
+//  ---- CRUD - Create, Read, Update, Delete ----
+
 
         // Inserir produto
         public Task<int> Insert(Produto p)
