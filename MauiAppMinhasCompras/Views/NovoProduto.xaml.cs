@@ -27,6 +27,9 @@ public partial class NovoProduto : ContentPage
 
             // Mensagem de confirmação da inserção no banco de dados
             await DisplayAlert("Sucesso!", "Registro inserido.", "OK");
+
+            // Voltar para a página anterior
+            await Navigation.PopAsync();
         }
         catch (Exception ex)
         {
