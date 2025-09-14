@@ -28,7 +28,7 @@ namespace MauiAppMinhasCompras.Models
             {
                 if (value == 0)
                 {
-                    throw new Exception("A quantidade não pode ser 0!");
+                    throw new Exception("O campo quantidade não pode ficar vazio!");
                 }if (value < 0)
                 {
                     throw new Exception("A quantidade não pode ser negativa!");
