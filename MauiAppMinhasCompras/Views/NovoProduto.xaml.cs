@@ -1,6 +1,7 @@
 // NovoProduto.xaml.cs == Código backend do XAML.
 using MauiAppMinhasCompras.Models;
 using System.Threading.Tasks;
+using Microsoft.Maui.Controls;
 
 namespace MauiAppMinhasCompras.Views;
 
@@ -15,11 +16,13 @@ public partial class NovoProduto : ContentPage
     {
         try
         { // Criar objeto Produto e preencher com dados da tela
+          
             Produto p = new Produto
             {
                 Descricao = txt_descricao.Text,
                 Quantidade = Convert.ToDouble(txt_quantidade.Text),
-                Preco = Convert.ToDouble(txt_preco.Text)
+                Preco = Convert.ToDouble(txt_preco.Text),
+                DataCadastro = _data.Date
 
             };
             // Inserir no banco de dados

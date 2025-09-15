@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
              x:Class="MauiAppMinhasCompras.Views.NovoProduto"
              Title="Adicionar Produto">
     
@@ -19,6 +20,9 @@
 
         <Label Text="Preço do produto"/>
         <Entry x:Name="txt_preco" Keyboard="Numeric" />
+
+        <Label Text="Data da compra"/>
+        <DatePicker x:Name="_data" Date="{Binding DataCadastro}" />
 
     </VerticalStackLayout>
 </ContentPage>
