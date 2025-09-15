@@ -130,5 +130,11 @@ public partial class ListaProduto : ContentPage
         {
             lst_produtos.IsRefreshing = false;
         }
+        
+    }
+    private async void OnFiltroClicked(object sender, EventArgs e)
+    {
+        // Navega para a página de filtro
+        await Navigation.PushAsync(new NewPage1());
     }
 }

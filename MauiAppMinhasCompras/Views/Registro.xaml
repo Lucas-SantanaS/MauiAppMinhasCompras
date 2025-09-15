@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppMinhasCompras.Views.NewPage1"
+             Title="Registros">
+    
+        <VerticalStackLayout Spacing="10" Padding="20">
+
+            <Label Text="Filtrar por Período" FontAttributes="Bold" FontSize="20" />
+
+            <Grid ColumnDefinitions="*,*">
+                <Label Grid.Column="0" Text="Data de Início:" VerticalOptions="Center" />
+                <DatePicker x:Name="data_inicio" Grid.Column="1" Format="dd/MM/yyyy" />
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*">
+                <Label Grid.Column="0" Text="Data de Fim:" VerticalOptions="Center" />
+                <DatePicker x:Name="data_fim" Grid.Column="1" Format="dd/MM/yyyy" />
+            </Grid>
+
+            <Button Text="Aplicar Filtro" Clicked="Button_Clicked" />
+
+            <CollectionView x:Name="lst_produtos">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Padding="10">
+                            <Label Text="{Binding Descricao}" FontAttributes="Bold" />
+                            <Label Text="{Binding DataCadastro, StringFormat='Data: {0:dd/MM/yyyy}'}" />
+                            <Label Text="{Binding Preco, StringFormat='Preço: {0:C}'}" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ContentPage>
